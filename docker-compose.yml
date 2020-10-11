@@ -23,7 +23,8 @@ services:
       AWS_ENDPOINT: aws:4566
       AWS_REGION: us-east-1
       NODE_ENV: development
-      NODE_TLS_REJECT_UNAUTHORIZED: 0
+      NODE_NO_WARNINGS: 1 # * Supress warnings about unverified HTTPS connections
+      NODE_TLS_REJECT_UNAUTHORIZED: 0 # * Connect via unverified HTTPS
     networks:
       - aws-network
     volumes:
