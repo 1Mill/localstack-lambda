@@ -19,6 +19,7 @@ services:
     build: ./node-app
     environment:
       # * Lambda function name to invoke (found in dev.config) ---
+      # LAMBDA_FUNCTIONNAME: go-lambda
       LAMBDA_FUNCTIONNAME: node-lambda
       # LAMBDA_FUNCTIONNAME: node-lambda-unique-handler
       # * ---
