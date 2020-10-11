@@ -11,7 +11,10 @@ const params = {
 	FunctionName: 'node-lambda',
 	// FunctionName: 'node-lambda-unique-handler',
 	InvocationType: 'RequestResponse',
-	Payload: JSON.stringify({ passed: true }),
+	Payload: JSON.stringify({
+		anotherMyProperty: 'abcd',
+		myProperty: true,
+	}),
 }
 lambda.invoke(params, (err, data) => {
 	if (err) {
