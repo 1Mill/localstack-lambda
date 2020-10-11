@@ -17,6 +17,7 @@ const params = {
 	Payload: JSON.stringify({ passed: true }),
 }
 lambda.invoke(params, (err, data) => {
-	if (err) { console.error(err, err.stack) }
-	else { console.log(data) }
+	const datetime = new Date().toISOString()
+	const log = { datetime, data, err }
+	console.log(log)
 })
