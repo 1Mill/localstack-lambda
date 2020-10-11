@@ -5,7 +5,7 @@ LAMBDA_DIRECTORIES=$(
 	find . \
 	-name "$LAMBDA_CONFIG_FILENAME" \
 	-not -path "*node_modules*" \
-	-printf "%h\n" \
+	-printf "%h\n"
 )
 
 for directory in $LAMBDA_DIRECTORIES
