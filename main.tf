@@ -19,7 +19,6 @@ module "node-lambda" {
 	runtime = "nodejs12.x"
 	source_directory = "${path.module}/node-lambda"
 }
-
 module "node-lambda-unique-handler" {
 	source = "github.com/click-flow/terraform-modules.git//v0.13/aws-lambda/v1"
 
@@ -33,4 +32,11 @@ module "node-lambda-unique-handler" {
 	name = "node-lambda-unique-handler"
 	runtime = "nodejs12.x"
 	source_directory = "${path.module}/node-lambda-unique-handler"
+}
+
+output "node-lambda-ARN" {
+	value = module.node-lambda.arn
+}
+output "node-lambda-unique-handler-ARN" {
+	value = module.node-lambda-unique-handler.arn
 }
