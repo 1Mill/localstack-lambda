@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# * Run setup steps for applications
-docker-compose -f ./setup.docker-compose.yml up
-
 LAMBDA_CONFIG_FILENAME=dev.config
 LAMBDA_DIRECTORIES=$(
 	find . \
@@ -22,6 +19,12 @@ do
 
 	# * Import configuration vars for lambda function
 	source $directory/$LAMBDA_CONFIG_FILENAME
+
+	# * Install dependancies if package.json is present
+	if [ -f "$directory/package.json" ]
+	then
+		DIRECTORY=$directory docker-compose -f ./setup.docker-compose.yml up
+	fi
 
 	# * Delete function if it already exists
 	aws --endpoint-url $AWS_ENDPOINT \
