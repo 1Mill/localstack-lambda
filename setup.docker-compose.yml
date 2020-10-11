@@ -5,5 +5,5 @@ services:
     command: npm install
     image: node:12-alpine
     volumes:
-      - ./:/app
+      - ./node-lambda:/app
     working_dir: /app
