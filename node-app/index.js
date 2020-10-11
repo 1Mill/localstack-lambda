@@ -7,6 +7,6 @@ AWS.config.update({
 	secretAccessKey: process.env.AWS_ACCESSKEY_SECRETKEY,
 })
 
-const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' })
 
 console.log('Hello world!')
