@@ -23,6 +23,7 @@ services:
       AWS_ENDPOINT: aws:4566
       AWS_REGION: us-east-1
       NODE_ENV: development
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
     networks:
       - aws-network
     volumes:

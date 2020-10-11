@@ -14,8 +14,8 @@ aws --endpoint-url=$AWS_ENDPOINT \
 # * Create function
 aws --endpoint-url=$AWS_ENDPOINT \
 	lambda create-function \
-		--code S3Bucket="__local__",S3Key="${HOST_ABSOLUTEPATH}" \
-		--function-name ${LAMBDA_FUNCTIONNAME} \
-		--handler ${LAMBDA_HANDLER} \
+		--code S3Bucket="__local__",S3Key="$HOST_ABSOLUTEPATH" \
+		--function-name $LAMBDA_FUNCTIONNAME \
+		--handler $LAMBDA_HANDLER \
 		--role just-has-to-exist \
-		--runtime ${LAMBDA_RUNTIME}
+		--runtime $LAMBDA_RUNTIME

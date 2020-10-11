@@ -8,5 +8,12 @@ AWS.config.update({
 })
 
 const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' })
-
-console.log('Hello world!')
+const params = {
+	FunctionName: 'node-lambda',
+	InvocationType: 'RequestResponse',
+	Payload: JSON.stringify({ passed: true }),
+}
+lambda.invoke(params, (err, data) => {
+	if (err) { console.error(err, err.stack) }
+	else { console.log(data) }
+})
