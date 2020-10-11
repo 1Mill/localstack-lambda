@@ -5,10 +5,12 @@ This repository shows how to configure `localstack` for local development and in
 ## Setup
 
 1. Open two consoles
-1. In the first console, run `docker-compose up aws` to start running `localstack` (alias `aws`)
-1. In the second console, run
-    1. `./setup.sh` to (1) install node packages and (2) create the lambda functions in `localstack`
-    1. `docker-compose up node-app` to invoke the lambda function input as `LAMBDA_FUNCTIONNAME` (found in `dev.config`)
+1. In the first console
+    1. Run `docker-compose up aws` to start running `localstack` (alias `aws`)
+    1. Wait for `aws` to be "Ready" in console
+1. In the second console
+    1. Run `./setup.sh` to (1) install node packages and (2) create the lambda functions in `localstack`
+    1. Run `docker-compose up node-app` to invoke the lambda function input as `LAMBDA_FUNCTIONNAME` (found in `dev.config`)
 
 ## Lambda Hot Reloading
 
