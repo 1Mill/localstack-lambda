@@ -16,6 +16,9 @@ lambda.invoke(params, (err, data) => {
 	if (err) {
 		console.error(err, err.stack)
 	} else {
-		console.log(data)
+		console.log({
+			...data,
+			Payload: JSON.parse(data.Payload)
+		})
 	}
 })
