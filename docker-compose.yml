@@ -27,8 +27,8 @@ services:
       NODE_TLS_REJECT_UNAUTHORIZED: 0 # * Connect via unverified HTTPS
     networks:
       - aws-network
-    volumes:
-      - ./node-app:/app
+    # volumes:
+    #   - ./node-app:/app
 
 networks:
   aws-network:

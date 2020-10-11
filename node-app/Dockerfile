@@ -14,4 +14,6 @@ ENV \
 	AWS_REGION \
 	NODE_ENV=production
 
+COPY . .
+
 CMD [ "npm", "run", "start" ]
