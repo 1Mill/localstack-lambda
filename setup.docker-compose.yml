@@ -1,7 +1,14 @@
 version: '3.8'
 
 services:
-  app:
+  node-app:
+    command: npm install
+    image: node:12-alpine
+    volumes:
+      - ./node-app:/app
+    working_dir: /app
+
+  node-lambda:
     command: npm install
     image: node:12-alpine
     volumes:

@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# * Run setup steps for applications
+docker-compose -f ./setup.docker-compose.yml up
+
+# * Configure vars for lambda functions
 AWS_ENDPOINT=http://localhost:4566/
 HOST_ABSOLUTEPATH=/$(cd -- ./node-lambda && pwd)
 LAMBDA_FUNCTIONNAME=node-lambda
