@@ -14,3 +14,7 @@ This repository shows how to configure `localstack` for local development and in
 
 * The `go-lambda` service does not have hot reloading as it must be pre-compiled. To compile the `go-lambda` service, checkout the `README.md` in the `go-lambda` folder.
 * The `node-lambda` has hot reloading enabled as `localstack` reads directly form the host machine on every invoke. So code changes are always picked up.
+
+## TODO
+
+* Abstract Go compile step to `./setup.sh`; conditionally run depending on input `RUNTIME`.
