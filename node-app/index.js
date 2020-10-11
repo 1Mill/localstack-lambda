@@ -8,8 +8,7 @@ const lambda = new AWS.Lambda({
 	secretAccessKey: process.env.AWS_ACCESSKEY_SECRETKEY,
 })
 const params = {
-	FunctionName: 'node-lambda',
-	// FunctionName: 'node-lambda-unique-handler',
+	FunctionName: process.env.LAMBDA_FUNCTIONNAME,
 	InvocationType: 'RequestResponse',
 	Payload: JSON.stringify({
 		anotherMyProperty: 'abcd',

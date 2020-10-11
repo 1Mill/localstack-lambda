@@ -18,6 +18,10 @@ services:
   node-app:
     build: ./node-app
     environment:
+      # * Lambda function name to invoke (found in dev.config) ---
+      LAMBDA_FUNCTIONNAME: node-lambda
+      # LAMBDA_FUNCTIONNAME: node-lambda-unique-handler
+      # * ---
       AWS_ACCESSKEY_ID: can-be-anything
       AWS_ACCESSKEY_SECRETKEY: can-be-anything
       AWS_ENDPOINT: aws:4566
