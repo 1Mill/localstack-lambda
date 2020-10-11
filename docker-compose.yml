@@ -5,6 +5,7 @@ services:
     environment:
       DEBUG: 1
       LAMBDA_DOCKER_NETWORK: aws-network
+      LAMBDA_REMOTE_DOCKER: 0
       SERVICES: lambda
     image: localstack/localstack:0.11.6
     networks:
