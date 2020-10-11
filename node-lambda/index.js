@@ -1,5 +1,9 @@
+const { v4: uuidv4 } = require('uuid')
+
 // ! "async" is required for RequesetResponse to work
-exports.handler = async (event, _context) => {
-	console.log(event)
-	return { testing: true }
+exports.handler = async (_event, _context) => {
+	return {
+		message: 'Your UUID is included in this payload',
+		uuid: uuidv4(),
+	}
 }
