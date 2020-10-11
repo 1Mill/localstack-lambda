@@ -17,6 +17,10 @@ services:
   node-app:
     build: ./node-app
     environment:
+      AWS_ACCESSKEY_ID: can-be-anything
+      AWS_ACCESSKEY_SECRETKEY: can-be-anything
+      AWS_ENDPOINT: aws:4566
+      AWS_REGION: us-east-1
       NODE_ENV: development
     networks:
       - aws-network
