@@ -1,5 +1,4 @@
-exports.handler = (event) => {
-	console.log('Triggered!')
+exports.handler = async (event, _context) => {
 	console.log(event)
 	return { testing: true }
 }
