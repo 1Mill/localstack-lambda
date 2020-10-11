@@ -9,6 +9,7 @@ const lambda = new AWS.Lambda({
 })
 const params = {
 	FunctionName: 'node-lambda',
+	// FunctionName: 'node-lambda-unique-handler',
 	InvocationType: 'RequestResponse',
 	Payload: JSON.stringify({ passed: true }),
 }
