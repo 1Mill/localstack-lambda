@@ -3,23 +3,37 @@
 # * Run setup steps for applications
 docker-compose -f ./setup.docker-compose.yml up
 
-# * Configure vars for lambda functions
-AWS_ENDPOINT=http://localhost:4566/
-HOST_ABSOLUTEPATH=/$(cd -- ./node-lambda && pwd)
-LAMBDA_FUNCTIONNAME=node-lambda
-LAMBDA_HANDLER=index.handler
-LAMBDA_RUNTIME=nodejs12.x
+LAMBDA_CONFIG_FILENAME=dev.config
+LAMBDA_DIRECTORIES=$(
+	find . \
+	-name "$LAMBDA_CONFIG_FILENAME" \
+	-not -path "*node_modules*" \
+	-printf "%h\n" \
+)
 
-# * Delete function if it already exists
-aws --endpoint-url $AWS_ENDPOINT \
-	lambda delete-function \
-		--function-name $LAMBDA_FUNCTIONNAME
+for directory in $LAMBDA_DIRECTORIES
+do
+	# * Reset / configure vars for lambda functions
+	AWS_ENDPOINT=http://localhost:4566/
+	FUNCTIONNAME=
+	HANDLER=
+	HOST_ABSOLUTEPATH=/$(cd -- $directory && pwd)
+	RUNTIME=
 
-# * Create function
-aws --endpoint-url $AWS_ENDPOINT \
-	lambda create-function \
-		--code S3Bucket="__local__",S3Key="$HOST_ABSOLUTEPATH" \
-		--function-name $LAMBDA_FUNCTIONNAME \
-		--handler $LAMBDA_HANDLER \
-		--role just-has-to-exist \
-		--runtime $LAMBDA_RUNTIME
+	# * Import configuration vars for lambda function
+	source $directory/$LAMBDA_CONFIG_FILENAME
+
+	# * Delete function if it already exists
+	aws --endpoint-url $AWS_ENDPOINT \
+		lambda delete-function \
+			--function-name $FUNCTIONNAME
+
+	# * Create function
+	aws --endpoint-url $AWS_ENDPOINT \
+		lambda create-function \
+			--code S3Bucket="__local__",S3Key="$HOST_ABSOLUTEPATH" \
+			--function-name $FUNCTIONNAME \
+			--handler $HANDLER \
+			--role just-has-to-exist \
+			--runtime $RUNTIME
+done
