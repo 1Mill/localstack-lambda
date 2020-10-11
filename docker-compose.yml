@@ -7,7 +7,7 @@ services:
       LAMBDA_DOCKER_NETWORK: aws-network
       LAMBDA_REMOTE_DOCKER: 0
       SERVICES: lambda
-    image: localstack/localstack:0.11.5 # ! 0.11.6 is bugged for lambda
+    image: localstack/localstack:0.11.5 # ! 2020-10-11 v0.11.6 appears to be bugged for lambda
     networks:
       - aws-network
     ports:
